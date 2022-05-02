@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 
 @Component({
@@ -8,10 +9,14 @@ import { MenuController } from '@ionic/angular';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private menu: MenuController) { }
+  constructor(private menu: MenuController, private router: Router) { }
 
   ngOnInit() { }
-
+  logout() {
+    window.localStorage.clear()
+    this.router.navigate(['/login']);
+    this.menu.close()
+  }
   openFirst() {
     this.menu.enable(true, 'first');
     this.menu.open('first');

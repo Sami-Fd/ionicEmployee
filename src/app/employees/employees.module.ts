@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { EmployeesPageRoutingModule } from './employees-routing.module';
 
 import { EmployeesPage } from './employees.page';
+import { ModalPageComponent } from './modal-page/modal-page.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { EmployeesPage } from './employees.page';
     FormsModule,
     IonicModule,
     EmployeesPageRoutingModule,
+
   ],
-  declarations: [EmployeesPage]
+  declarations: [EmployeesPage, ModalPageComponent]
 })
 export class EmployeesPageModule { }

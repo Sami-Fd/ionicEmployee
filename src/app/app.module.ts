@@ -10,6 +10,7 @@ import { MenuComponent } from './menu/menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LongPressModule } from 'ionic-long-press';
 import { IonicGestureConfig } from './_helpers/IonicGestureConfig';
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { IonicGestureConfig } from './_helpers/IonicGestureConfig';
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, {
     provide: HAMMER_GESTURE_CONFIG,
     useClass: IonicGestureConfig,
-  },],
+  }, authInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -6,9 +6,12 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-    constructor(private router: Router) { }
+    constructor(private router: Router) {
+
+    }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        console.log("dddddddddd")
         let authReq = req;
         if (!window.localStorage.getItem("user")) {
             this.router.navigate(['/login']);

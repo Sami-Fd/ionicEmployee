@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { GlobalService } from './_services/global/global.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,8 @@ import { Router } from '@angular/router';
 export class AppComponent {
   pressState: string;
   progress: any;
-  constructor(private router: Router) {
-    if (!window.localStorage.getItem("user")) {
-      this.router.navigate(['/login']);
-    }
+  constructor(private router: Router, public globalService: GlobalService) {
+
   }
   active() {
     console.log("pressss")

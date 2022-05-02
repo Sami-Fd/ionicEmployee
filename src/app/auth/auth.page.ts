@@ -10,7 +10,11 @@ import { AuthService } from '../_services/auth/auth.service';
 })
 export class AuthPage implements OnInit {
   user: User = new User();
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {
+    if (window.localStorage.getItem("user")) {
+      this.router.navigate(['/']);
+    }
+  }
 
   ngOnInit() {
   }
@@ -18,7 +22,7 @@ export class AuthPage implements OnInit {
     this.authService.login(this.user).subscribe(result => {
       if (result[0].username == this.user.username && result[0].password == this.user.password) {
         window.localStorage.setItem("user", JSON.stringify(result[0]));
-        this.router.navigate(['/employee']);
+        this.router.navigate(['/']);
       } else {
         console.log("error")
       }

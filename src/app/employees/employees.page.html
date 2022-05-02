@@ -1,16 +1,31 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>employees</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="openModalUpdate()" [disabled]="!isSelected">
+        <ion-icon name="pencil-outline" style="font-size:1.3rem"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="presentAlertConfirm()" style="font-size:1.3rem" [disabled]="!isSelected">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
+
 </ion-header>
 
 <ion-content>
-  <ion-list *ngFor="let employee of employees" (press)="actions()">
-    <ion-item>
+
+  <ion-list *ngFor="let employee of employees" (press)="actions(employee)">
+    <ion-item [ngClass]="{'backgroundColor': employee && employee.isColored}">
       <ion-label>
         <h2>{{employee.first_name}} {{employee.last_name}}</h2>
-        <h3>{{employee.email}}</h3>
+        <h3 style="opacity: 0.7;">{{employee.email}}</h3>
       </ion-label>
     </ion-item>
   </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="openModalAdd()">
+    <ion-fab-button>
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
